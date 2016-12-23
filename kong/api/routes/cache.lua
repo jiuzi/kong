@@ -1,6 +1,5 @@
 local responses = require "kong.tools.responses"
 local cache = require "kong.tools.database_cache"
-local cjson = require "cjson.safe"
 
 -- Create a table of functions per cache type
 local caches
