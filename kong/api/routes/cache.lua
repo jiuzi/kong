@@ -59,12 +59,7 @@ return {
       if self.params.key then
         local cached_item = caches[self.params.cache]("get", self.params.key)
         if cached_item ~= nil then
-          local encoded, err = cjson.encode(cached_item)
-          if not encoded then
-            ngx.log(ngx.ERR, "[admin] could not encode cached value: ", err)
-          end
-
-          return responses.send_HTTP_OK(encoded)
+          return responses.send_HTTP_OK(cached_item)
         end
       end
 
