@@ -1,5 +1,4 @@
 local helpers = require "spec.helpers"
-local cache = require "kong.tools.database_cache"
 local cjson = require "cjson"
 
 local current_cache

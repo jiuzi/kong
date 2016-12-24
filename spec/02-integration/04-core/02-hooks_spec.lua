@@ -1,7 +1,6 @@
 local helpers = require "spec.helpers"
 local cjson = require "cjson"
 local cache = require "kong.tools.database_cache"
-local pl_tablex = require "pl.tablex"
 local pl_utils = require "pl.utils"
 local pl_path = require "pl.path"
 local pl_file = require "pl.file"
@@ -206,7 +205,7 @@ describe("Core Hooks", function()
 
   describe("Other", function()
     local client, api_client
-    local consumer, api1, api2, basic_auth2, api3, rate_limiting_consumer
+    local consumer, api2, basic_auth2, api3, rate_limiting_consumer
 
     before_each(function()
       consumer = assert(helpers.dao.consumers:insert {
@@ -218,7 +217,7 @@ describe("Core Hooks", function()
         consumer_id = consumer.id
       })
 
-      api1 = assert(helpers.dao.apis:insert {
+      assert(helpers.dao.apis:insert {
         name = "hook1",
         hosts = { "hooks1.com" },
         upstream_url = "http://mockbin.com"
